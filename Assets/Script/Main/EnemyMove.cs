@@ -7,10 +7,14 @@ public class EnemyMove : MonoBehaviour
 {
     Rigidbody2D Enemy;
     private float Move = 3.0f;
+    public AudioClip OverSE;
+    private AudioSource audioSource;
 
     void Start()
     {
-        
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = OverSE;
     }
 
     // Update is called once per frame
@@ -24,14 +28,21 @@ public class EnemyMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Kabe")
         {
-            Debug.Log("当たり");
             Move = Move * -1.0f;
         }
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.name == "Player")
         {
+            Transform Plpos = collision.transform;
+            Vector2 pos = Plpos.position;
 
-            SceneManager.LoadScene("Score");
+
+            pos.x = 0;
+            pos.y = 2;
+
+            Plpos.position = pos;
+            audioSource.Play();
+
         }
     }
 }

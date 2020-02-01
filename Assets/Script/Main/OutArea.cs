@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class OutArea : MonoBehaviour
 {
+    public AudioClip OverSE;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = OverSE;
     }
 
     // Update is called once per frame
@@ -22,7 +25,17 @@ public class OutArea : MonoBehaviour
 
         if (collision.gameObject.name == "Player")
         {
-            SceneManager.LoadScene("Score");
+            Transform Plpos = collision.transform;
+            Vector2 pos = Plpos.position;
+
+
+            pos.x = 0;
+            pos.y = 2;
+
+            Plpos.position = pos;
+
+            audioSource.Play();
+
         }
 
     }

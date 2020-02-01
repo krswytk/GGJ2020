@@ -24,7 +24,7 @@ public class TimeOn : MonoBehaviour
             SceneManager.LoadScene("Main");
         }
         time += Time.deltaTime;
-        Debug.Log(no);
+        //Debug.Log(no);
         if(time > 3)
         {
             no += 1;

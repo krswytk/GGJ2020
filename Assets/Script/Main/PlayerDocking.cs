@@ -7,13 +7,14 @@ public class PlayerDocking : MonoBehaviour
     private static int ROBOCOUNT;
     private static bool[] ROBO = new bool[5];//0 body 1 LR 2 LL 3 AR 4 AL
     public GameObject[] pars;////0 body 1 LR 2 LL 3 AR 4 AL
+    private AudioSource[] audioSource;
     // Start is called before the first frame update
     void Start()
     {
        // ROBO = new PART();//クラスを生成
         ROBOCOUNT = 0;
-
-        for(int lp = 0; lp < ROBO.Length; lp++)
+        audioSource = gameObject.GetComponents<AudioSource>();
+        for (int lp = 0; lp < ROBO.Length; lp++)
         {
             ROBO[lp] = false;
         }
@@ -37,6 +38,10 @@ public class PlayerDocking : MonoBehaviour
             collision.transform.parent = this.transform; //接触したパーツを子のオブジェクトに
             if(collision.gameObject.name == "BODY")//各ハーツごとの取得をboolで判断
             {
+                if(ROBO[0] == false)
+                {
+                    audioSource[1].Play();
+                }
                 ROBO[0] = true;
                // pars[0].GetComponent<aniON>
                 ROBOCOUNT++;
@@ -44,24 +49,40 @@ public class PlayerDocking : MonoBehaviour
             }
             if (collision.gameObject.name == "AR")
             {
+                if (ROBO[3] == false)
+                {
+                    audioSource[1].Play();
+                }
                 ROBO[3] = true;
                 ROBOCOUNT++;
                 SetAR(collision);
             }
             if (collision.gameObject.name == "AL")
             {
+                if (ROBO[4] == false)
+                {
+                    audioSource[1].Play();
+                }
                 ROBO[4] = true;
                 ROBOCOUNT++;
                 SetAL(collision);
             }
             if (collision.gameObject.name == "LR")
             {
+                if (ROBO[1] == false)
+                {
+                    audioSource[1].Play();
+                }
                 ROBO[1] = true;
                 ROBOCOUNT++;
                 SetLR(collision);
             }
             if (collision.gameObject.name == "LL")
             {
+                if (ROBO[2] == false)
+                {
+                    audioSource[1].Play();
+                }
                 ROBO[2] = true;
                 ROBOCOUNT++;
                 SetLL(collision);

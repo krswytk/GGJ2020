@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerControlUP : MonoBehaviour
 {
     Vector2 force;
     private bool JP;//ジャンプ判定
     private int JumpPower = 200;//ジャンプ力
+    public AudioClip JumpSE;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         JP = true;
-
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip =JumpSE;
     }
 
     // Update is called once per frame
@@ -26,6 +30,7 @@ public class PlayerControlUP : MonoBehaviour
             {
                 up.AddForce(new Vector2(0, JumpPower));
                 JP = false;
+                audioSource.Play();
             }
         }
         //transform.position = pos;
