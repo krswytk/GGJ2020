@@ -17,7 +17,7 @@ public class Starts : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R))
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("Tyutorial");
         }
         if (Input.GetKey(KeyCode.Escape))
         {
@@ -27,6 +27,6 @@ public class Starts : MonoBehaviour
 
     public void OnClickM()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Tyutorial");
     }
 }

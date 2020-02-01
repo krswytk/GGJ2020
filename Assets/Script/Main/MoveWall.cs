@@ -39,14 +39,14 @@ public class MoveWall : MonoBehaviour
         }
                
 
-        if (Position.y >= 11.0f)
+        if (Position.y >= 6.0f)
         {
 
             sw = true;
 
         }
 
-        if (Position.y <= 6.0f)
+        if (Position.y <= 0.0f)
         { 
 
            sw=false;

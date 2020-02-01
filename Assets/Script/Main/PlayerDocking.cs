@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerDocking : MonoBehaviour
 {
     private static int ROBOCOUNT;
-    private bool[] ROBO = new bool[5];//0 body 1 LR 2 LL 3 AR 4 AL
+    private static bool[] ROBO = new bool[5];//0 body 1 LR 2 LL 3 AR 4 AL
+    public GameObject[] pars;////0 body 1 LR 2 LL 3 AR 4 AL
     // Start is called before the first frame update
     void Start()
     {
@@ -36,26 +37,32 @@ public class PlayerDocking : MonoBehaviour
             collision.transform.parent = this.transform; //接触したパーツを子のオブジェクトに
             if(collision.gameObject.name == "BODY")//各ハーツごとの取得をboolで判断
             {
+                ROBO[0] = true;
+               // pars[0].GetComponent<aniON>
                 ROBOCOUNT++;
                 SetBody(collision);
             }
             if (collision.gameObject.name == "AR")
             {
+                ROBO[3] = true;
                 ROBOCOUNT++;
                 SetAR(collision);
             }
             if (collision.gameObject.name == "AL")
             {
+                ROBO[4] = true;
                 ROBOCOUNT++;
                 SetAL(collision);
             }
             if (collision.gameObject.name == "LR")
             {
+                ROBO[1] = true;
                 ROBOCOUNT++;
                 SetLR(collision);
             }
             if (collision.gameObject.name == "LL")
             {
+                ROBO[2] = true;
                 ROBOCOUNT++;
                 SetLL(collision);
             }
