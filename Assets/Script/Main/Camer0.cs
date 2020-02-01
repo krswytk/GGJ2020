@@ -22,7 +22,7 @@ public class Camer0 : MonoBehaviour
         Vector3 ppos = MyPos.position; ;
 
         ppos.x = plpos.x + 4;
-        ppos.y = plpos.y+1;
+        ppos.y = 2;
         ppos.z = -10;
 
 
