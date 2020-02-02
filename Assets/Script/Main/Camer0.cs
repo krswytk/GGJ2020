@@ -21,9 +21,23 @@ public class Camer0 : MonoBehaviour
         Vector3 pos = MyPos.localPosition;
         Vector3 ppos = MyPos.position; ;
 
-        ppos.x = plpos.x + 4;
-        ppos.y = 2;
-        ppos.z = -10;
+        if (plpos.y < 6 || plpos.y > 1)
+        {
+            ppos.x = plpos.x + 4;
+            ppos.y = 2;
+            ppos.z = -10;
+        }else if(plpos.y >= 6)
+        {
+            ppos.x = plpos.x + 4;
+            ppos.y = plpos.y;
+            ppos.z = -10;
+        }else if(plpos.y <= 1)
+        {
+
+            ppos.x = plpos.x + 4;
+            ppos.y = plpos.y;
+            ppos.z = -10;
+        }
 
 
         MyPos.position = ppos;

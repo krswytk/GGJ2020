@@ -8,6 +8,7 @@ public class Movefloar : MonoBehaviour
 
     public float Min;
     bool up;
+    public int power;
 
     Rigidbody2D rb;
     // Start is called before the first frame update
@@ -48,10 +49,10 @@ public class Movefloar : MonoBehaviour
 
         if(up == true)
         {
-            rb.AddForce(new Vector2(0, 30));
+            rb.AddForce(new Vector2(0, power));
         }else if(up == false)
         {
-            rb.AddForce(new Vector2(0, -30));
+            rb.AddForce(new Vector2(0, -power));
         }
     }
 }

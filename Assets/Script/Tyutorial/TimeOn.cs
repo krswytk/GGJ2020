@@ -29,7 +29,7 @@ public class TimeOn : MonoBehaviour
         {
             no += 1;
             time = 0;
-            Debug.Log("TIMEUP");
+            //Debug.Log("TIMEUP");
         }
 
         if (Input.GetMouseButtonDown(0))

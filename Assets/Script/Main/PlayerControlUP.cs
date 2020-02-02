@@ -7,9 +7,10 @@ public class PlayerControlUP : MonoBehaviour
 {
     Vector2 force;
     private bool JP;//ジャンプ判定
-    private int JumpPower = 200;//ジャンプ力
+    private float JumpPower;//ジャンプ力
     public AudioClip JumpSE;
     private AudioSource audioSource;
+    private int power;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,18 @@ public class PlayerControlUP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        power = PlayerDocking.RoboCount();
+        switch (power)
+        {
+            case 0: JumpPower = 7;break;
+            case 1: JumpPower = 11; break;
+            case 2: JumpPower = 14; break;
+            case 3: JumpPower = 16; break;
+            case 4: JumpPower = 18; break;
+            case 5: JumpPower = 20; break;
+            case 6: JumpPower = 29; break;
+            default:JumpPower = 35;break;
+        }
         //Vector3 pos = transform.position;
         Rigidbody2D up = GetComponent<Rigidbody2D>();
         if (Input.GetButtonDown("Jump"))
@@ -28,10 +41,18 @@ public class PlayerControlUP : MonoBehaviour
 
             if (JP == true)
             {
-                up.AddForce(new Vector2(0, JumpPower));
+                Vector2 force = new Vector2(0,JumpPower);
+                up.AddForce(force, ForceMode2D.Impulse);
                 JP = false;
                 audioSource.Play();
             }
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+
+            Vector2 force = new Vector2(0, -1);
+            up.AddForce(force, ForceMode2D.Impulse);
         }
         //transform.position = pos;
     }

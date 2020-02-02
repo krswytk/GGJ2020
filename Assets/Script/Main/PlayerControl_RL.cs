@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerControl_RL : MonoBehaviour
 {
     Vector2 force;
-
+    int count;
+    int power = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,25 +16,50 @@ public class PlayerControl_RL : MonoBehaviour
     void Update()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-
-        if (Input.GetKey(KeyCode.D))
+        count = PlayerDocking.RoboCount();
+       /* switch (count)
         {
-            //print("up arrow key is held down");
+            case 0: power = 20;break;
+            case 1: power = 30; break;
+            case 2: power = 40; break;
+            case 3: power = 50; break;
+            case 4: power = 60; break;
+            case 5: power = 70; break;
+            default:power = 80;break;
+        }*/
 
-            //force = new Vector2(1000, 0);
-
-            rb.AddForce(new Vector2(10, 0));
-
-        }
-        if (Input.GetKey(KeyCode.A))
+        if (rb.velocity.magnitude < 10.0f )
         {
-            //print("up arrow key is held down");
+            if (Input.GetKey(KeyCode.D))
+            {
+                //print("up arrow key is held down");
 
-            //force = new Vector2(-1000, 0);
-            rb.AddForce(new Vector2(-10,0 ));
+                //force = new Vector2(1000, 0);
+                Vector2 force = new Vector2(power, 0);
+                rb.AddForce(force);
 
-        }
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                //print("up arrow key is held down");
 
-        rb.AddForce(force * 0.2f);
+                //force = new Vector2(-1000, 0);
+                Vector2 force = new Vector2(-power, 0);
+                rb.AddForce(force);
+            }
+            else
+            {
+                rb.velocity = new Vector2(rb.velocity.x*0.5f, rb.velocity.y);
+            }
+        }/*else
+        {
+            rb.velocity = new Vector2(10,0);
+            Debug.Log("制限速度");
+        }*/
+
+
     }
+
+      //a  rb.AddForce(force * 0.2f);
+    
 }

@@ -8,6 +8,7 @@ public class PlayerDocking : MonoBehaviour
     private static bool[] ROBO = new bool[5];//0 body 1 LR 2 LL 3 AR 4 AL
     public GameObject[] pars;////0 body 1 LR 2 LL 3 AR 4 AL
     private AudioSource[] audioSource;
+    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +19,25 @@ public class PlayerDocking : MonoBehaviour
         {
             ROBO[lp] = false;
         }
+         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(ROBOCOUNT);
+        switch (ROBOCOUNT)
+        {
+            case 0: rb.gravityScale = 1; break;
+            case 1: rb.gravityScale = 2; break;
+            case 2: rb.gravityScale = 3; break;
+            case 3: rb.gravityScale = 4; break;
+            case 4: rb.gravityScale = 5; break;
+            case 5: rb.gravityScale = 5; break;
+            case 6: rb.gravityScale = 6; break;
+            default: rb.gravityScale = 7; break;
+        }
+
     }
 
     public static int RoboCount()
@@ -34,8 +48,11 @@ public class PlayerDocking : MonoBehaviour
     {
         if (collision.gameObject.tag == "Part")
         {
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
             collision.transform.parent = this.transform; //接触したパーツを子のオブジェクトに
+
+            //重さ変更
+
+
             if(collision.gameObject.name == "BODY")//各ハーツごとの取得をboolで判断
             {
                 if(ROBO[0] == false)
@@ -95,22 +112,44 @@ public class PlayerDocking : MonoBehaviour
 
     public void SetBody(Collision2D ob)
     {
-        ROBO[0] = true;
-        Transform obpos = ob.transform;
-        Vector3 pos = obpos.localPosition;
-        Vector3 rot = obpos.localEulerAngles;
-        pos.x = 0;
-        pos.y = -1.3f;
-        rot.x = 0;
-        rot.y = 0;
-        rot.z = 0;
-        obpos.localPosition = pos;
-        obpos.localEulerAngles = rot;
-        
-        Transform PLPos = this.transform;
-        Vector3 ppos = PLPos.position;
-        ppos.y = 3;
-        PLPos.position = ppos;
+        if (ROBO[1] == false && ROBO[2] == false && ROBO[3] == false && ROBO[4] == false)
+        {
+            ROBO[0] = true;
+            Transform obpos = ob.transform;
+            Vector3 pos = obpos.localPosition;
+            Vector3 rot = obpos.localEulerAngles;
+            pos.x = 0;
+            pos.y = -1.3f;
+            rot.x = 0;
+            rot.y = 0;
+            rot.z = 0;
+            obpos.localPosition = pos;
+            obpos.localEulerAngles = rot;
+
+            Transform PLPos = this.transform;
+            Vector3 ppos = PLPos.position;
+            ppos.y = 3;
+            PLPos.position = ppos;
+        }
+        else
+        {
+            ROBO[0] = true;
+            Transform obpos = ob.transform;
+            Vector3 pos = obpos.localPosition;
+            Vector3 rot = obpos.localEulerAngles;
+            pos.x = 0;
+            pos.y = 1.3f;
+            rot.x = 0;
+            rot.y = 0;
+            rot.z = 180;
+            obpos.localPosition = pos;
+            obpos.localEulerAngles = rot;
+
+            Transform PLPos = this.transform;
+            Vector3 ppos = PLPos.position;
+            ppos.y = 3;
+            PLPos.position = ppos;
+        }
 
 
     }
@@ -118,6 +157,7 @@ public class PlayerDocking : MonoBehaviour
     {
         if (ROBO[0] == true)
         {
+            ROBO[1] = true;
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
@@ -137,6 +177,7 @@ public class PlayerDocking : MonoBehaviour
         }
         else
         {
+            ROBO[1] = true;
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
@@ -158,6 +199,7 @@ public class PlayerDocking : MonoBehaviour
     {
         if (ROBO[0] == true)
         {
+            ROBO[2] = true;
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
@@ -177,6 +219,7 @@ public class PlayerDocking : MonoBehaviour
         }
         else
         {
+            ROBO[2] = true;
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
@@ -198,6 +241,7 @@ public class PlayerDocking : MonoBehaviour
     {
         if(ROBO[0] == true)
         {
+            ROBO[3] = true;
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
@@ -217,6 +261,7 @@ public class PlayerDocking : MonoBehaviour
         }
         else
         {
+            ROBO[3] = true;
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
@@ -238,6 +283,7 @@ public class PlayerDocking : MonoBehaviour
     {
         if (ROBO[0] == true)
         {
+            ROBO[4] = true;
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
@@ -257,6 +303,7 @@ public class PlayerDocking : MonoBehaviour
         }
         else
         {
+            ROBO[4] = true;
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;

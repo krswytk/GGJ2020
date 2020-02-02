@@ -16,7 +16,7 @@ public class Score : MonoBehaviour
     {
         Parts = PlayerDocking.RoboCount();
         tm    = TimerText.time;
-        score= (int)tm/ Parts;
+        score= (int)(tm/ Parts);
         text1.text = "Parts : " + Parts;
         text2.text = "Time：" + (int)tm;
         text3.text = "Score：" + score;
