@@ -17,16 +17,16 @@ public class PlayerControl_RL : MonoBehaviour
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         count = PlayerDocking.RoboCount();
-       /* switch (count)
+        switch (count)
         {
             case 0: power = 20;break;
-            case 1: power = 30; break;
-            case 2: power = 40; break;
-            case 3: power = 50; break;
-            case 4: power = 60; break;
-            case 5: power = 70; break;
-            default:power = 80;break;
-        }*/
+            case 1: power = 23; break;
+            case 2: power = 26; break;
+            case 3: power = 29; break;
+            case 4: power = 32; break;
+            case 5: power = 35; break;
+            default:power = 40;break;
+        }
 
         if (rb.velocity.magnitude < 10.0f )
         {

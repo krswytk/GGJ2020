@@ -29,8 +29,8 @@ public class PlayerControlUP : MonoBehaviour
             case 1: JumpPower = 11; break;
             case 2: JumpPower = 14; break;
             case 3: JumpPower = 16; break;
-            case 4: JumpPower = 18; break;
-            case 5: JumpPower = 20; break;
+            case 4: JumpPower = 17; break;
+            case 5: JumpPower = 18; break;
             case 6: JumpPower = 29; break;
             default:JumpPower = 35;break;
         }

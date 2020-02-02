@@ -25,7 +25,7 @@ public class PlayerDocking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(ROBOCOUNT);
+        //Debug.Log(ROBOCOUNT);
         switch (ROBOCOUNT)
         {
             case 0: rb.gravityScale = 1; break;
@@ -46,6 +46,7 @@ public class PlayerDocking : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Part")
         {
             collision.transform.parent = this.transform; //接触したパーツを子のオブジェクトに
@@ -161,7 +162,7 @@ public class PlayerDocking : MonoBehaviour
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
-            pos.x = 0.2f;
+            pos.x = 0f;
             pos.y = -2.5f;
             rot.x = 0;
             rot.y = 0;
@@ -181,7 +182,7 @@ public class PlayerDocking : MonoBehaviour
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
-            pos.x = 0.2f;
+            pos.x = 0f;
             pos.y = -1.3f;
             rot.x = 0;
             rot.y = 0;
@@ -203,7 +204,7 @@ public class PlayerDocking : MonoBehaviour
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
-            pos.x = 0.2f;
+            pos.x = 0f;
             pos.y = -2.5f;
             rot.x = 0;
             rot.y = 0;
@@ -223,7 +224,7 @@ public class PlayerDocking : MonoBehaviour
             Transform obpos = ob.transform;
             Vector3 pos = obpos.localPosition;
             Vector3 rot = obpos.localEulerAngles;
-            pos.x = 0.2f;
+            pos.x = 0f;
             pos.y = -1.3f;
             rot.x = 0;
             rot.y = 0;

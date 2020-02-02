@@ -48,7 +48,7 @@ public class CarMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("HIT");
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Player")
         {
             Transform Plpos = collision.transform;

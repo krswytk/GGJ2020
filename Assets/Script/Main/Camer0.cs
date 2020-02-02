@@ -18,10 +18,10 @@ public class Camer0 : MonoBehaviour
         Vector3 plpos = pps.position;       //
 
         Transform MyPos = this.transform;   //カメラオブジェクトの座標取得
-        Vector3 pos = MyPos.localPosition;
+        //Vector3 pos = MyPos.localPosition;
         Vector3 ppos = MyPos.position; ;
 
-        if (plpos.y < 6 || plpos.y > 1)
+        if (plpos.y < 6 && plpos.y > 1)
         {
             ppos.x = plpos.x + 4;
             ppos.y = 2;
@@ -29,13 +29,12 @@ public class Camer0 : MonoBehaviour
         }else if(plpos.y >= 6)
         {
             ppos.x = plpos.x + 4;
-            ppos.y = plpos.y;
+            ppos.y = plpos.y/3;
             ppos.z = -10;
         }else if(plpos.y <= 1)
         {
-
             ppos.x = plpos.x + 4;
-            ppos.y = plpos.y;
+            ppos.y = plpos.y*2;
             ppos.z = -10;
         }
 
