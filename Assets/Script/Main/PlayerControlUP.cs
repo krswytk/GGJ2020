@@ -31,7 +31,7 @@ public class PlayerControlUP : MonoBehaviour
             case 3: JumpPower = 16; break;
             case 4: JumpPower = 17; break;
             case 5: JumpPower = 18; break;
-            case 6: JumpPower = 29; break;
+            case 6: JumpPower = 19; break;
             default:JumpPower = 35;break;
         }
         //Vector3 pos = transform.position;

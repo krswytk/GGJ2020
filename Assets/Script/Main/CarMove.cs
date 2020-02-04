@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CarMove : MonoBehaviour
 {
-    Rigidbody2D Car;
+    public Rigidbody2D Car;
     public AudioClip OverSE;
-    public float CarSpeed = 0.5f;
+    public float CarSpeed;
     private float time;
     private AudioSource audioSource;
 
@@ -14,7 +14,7 @@ public class CarMove : MonoBehaviour
     {
         audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.clip = OverSE;
-        this.Car = GetComponent<Rigidbody2D>();
+        //Car = GetComponent<Rigidbody2D>();
         time = 0;
     }
 
@@ -22,8 +22,10 @@ public class CarMove : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        Move();
-        if (time > 2)
+
+        Car.velocity = new Vector2(-CarSpeed, 0);
+        //Move();
+        if (time > 7)
         {
             Destroy(this.gameObject);
         }
@@ -65,6 +67,7 @@ public class CarMove : MonoBehaviour
     }
     void Move()
     {
+        /*
         Transform pos = this.transform;
         Vector2 Position = pos.position;
 
@@ -73,7 +76,10 @@ public class CarMove : MonoBehaviour
         // 現在の位置に加算減算を行ったPositionを代入する
 
         pos.position = Position;
+        */
 
+        //現在のpositionに移動速度を加算していく
+        this.transform.position -= new Vector3(CarSpeed, 0, 0);
     }
 
 

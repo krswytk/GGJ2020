@@ -18,7 +18,7 @@ public class Leg_L_Manager : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (time > 3)
+        if (time > 5)
         {
             Instantiate(Car, this.transform.position, Quaternion.identity);
             time = 0;

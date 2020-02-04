@@ -49,7 +49,7 @@ public class PlayerControl_RL : MonoBehaviour
             }
             else
             {
-                rb.velocity = new Vector2(rb.velocity.x*0.5f, rb.velocity.y);
+                rb.velocity = new Vector2(rb.velocity.x*0.8f, rb.velocity.y);
             }
         }/*else
         {
